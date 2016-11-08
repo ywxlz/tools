@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	<struts>
+		<constant name="struts.ui.theme" value="simple" />
+		<constant name="struts.i18n.encoding" value="UTF-8" />
+		<constant name="struts.i18n.reload" value="true" />
+		<constant name="struts.action.excludePattern" value="/static/.*?" />
+		
+		<!-- 用户注册和登陆 -->
+		<package name="userPackage" extends="struts-default" namespace="/">
+			<!-- 登陆 -->
+			<action name="loginAction" class="UserAction" method="login">
+				<result name="login">/index.jsp</result>
+				<result name="loginFailed">/loginFailed.jsp</result>
+			</action>
+			
+			<!-- 注册 -->
+			<action name="registerAction" class="UserAction" method="register">
+				<result name="register">/login.jsp</result>
+				<result name="failed">/failed.jsp</result>
+			</action>
+			
+			<!-- 注销 -->
+			<action name="logoutAction" class="UserAction" method="logout">
+				<result name="logout">/index.jsp</result>
+			</action>
+		</package>
+		
+		<!-- blog -->
+		<package name="blogPackage" extends="struts-default" namespace="/">
+			<action name="queryBlogAction" class="BlogAction" method="query">
+				<!-- 不要被名字迷惑 这其实是博客 -->
+				<result name="query">/car_know_detail.jsp</result>
+			</action>
+			<!-- 单个博客查询 -->
+			<action name="queryBlogById" class="BlogAction" method="queryById">
+				<result name="queryById">/blogDetail.jsp</result>
+			</action>
+			<!-- 添加博客 -->
+			<action name="addBlogAction" class="BlogAction" method="addBlog">
+				<result name="addBlog">/index.jsp</result>
+			</action>
+		</package>
+		
+		<!-- know -->
+		<package name="knowPackage" extends="struts-default" namespace="/">
+			<action name="queryKnowAction" class="KnowAction" method="queryKnow">
+				<result name="queryKnow">/knowDetail.jsp</result>
+			</action>
+			<action name="queryKnowById" class="KnowAction" method="queryKnowById">
+				<result name="queryKnowById">know.jsp</result>
+			</action>
+			<action name="replyAction" class="KnowAction" method="reply">
+				<result name="reply">/index.jsp</result>
+			</action>
+			<action name="addKnowAction" class="KnowAction" method="addKnow">
+				<result name="addKnow">/index.jsp</result>
+			</action>
+		</package>
+		
+		</struts>

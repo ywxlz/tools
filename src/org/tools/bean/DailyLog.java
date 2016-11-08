@@ -2,6 +2,7 @@ package org.tools.bean;
 
 public class DailyLog {
 	private String id;
+	private String userid;
 	private String date;
 	private String week;
 	private String context;
@@ -9,9 +10,10 @@ public class DailyLog {
 	public DailyLog() {
 		
 	}
-	public DailyLog(String id, String date, String week, String context,
-			String log) {
+	public DailyLog(String id, String userid, String date, String week,
+			String context, String log) {
 		this.setId(id);
+		this.setUserid(userid);
 		this.setDate(date);
 		this.setWeek(week);
 		this.setContext(context);
@@ -22,6 +24,12 @@ public class DailyLog {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getDate() {
 		return date;
